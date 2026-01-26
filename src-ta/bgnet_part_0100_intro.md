@@ -209,7 +209,17 @@ I'll appreciate the purchase because it helps sustain my
 document-writing lifestyle!
 
 
-## Note for Solaris/SunOS/illumos Programmers {#solaris}
+## Solaris/SunOS/illumos இயங்குதளங்களின் நிரலாலர்களுக்கு {#solaris}
+
+நிரல்களை நிரல்மொழிமாற்றம் செய்யும் பொழுது [i[Solaris]] Solaris variant or [i[SunOS]] SunOS
+இயங்குதளங்களை பயன்படுத்தும் நிரலாலர்கள் சில நூலகங்களுக்கான கட்டளை-வரி தெரிவுகளையும் இணைத்து
+பயன்படுத்தவேண்டும். இவ்வாறு செய்வதற்கு எளிமையாக "`-lnsl -lsocket -lresolv`" என்றவாறு நிரல்மொழிமாற்றம் செய்யும் 
+கட்டளையின் இறுதியில் சேர்த்துகொள்ளவேண்டும்.
+
+```
+$ cc -o server server.c -lnsl -lsocket -lresolv
+```
+
 
 When compiling for a [i[Solaris]] Solaris variant or [i[SunOS]] SunOS,
 you need to specify some extra command-line switches for linking in the
@@ -219,10 +229,31 @@ proper libraries. In order to do this, simply add "`-lnsl -lsocket
 ```
 $ cc -o server server.c -lnsl -lsocket -lresolv
 ```
+மேலும் நீங்கள் பிழைசெய்திகளை பெற நேர்ந்தால் நீங்கள் `-lxnet` எனும் தேர்வினையும் சேர்த்து பயன்படுத்த வேண்டும்.
+இது சரியாக எதற்காக பயன்படுத்தினேன் என்று தெரியவில்லை ஆனால் சிலருக்கு மட்டும் அது தேவைப்படலாம்.
 
 If you still get errors, you could try further adding a `-lxnet` to the
 end of that command line. I don't know what that does, exactly, but some
 people seem to need it.
+
+மற்றொரு சவாலான இடம் எதுவெனில் `setsockopt()` செயற்கூறினை அழைக்கும்போது இயங்குதளங்களுக்கேற்றவாறு 
+முன்வடிவினை (prototype) உள்ளிட வேண்டும்.
+
+உதாரணமாக:
+
+```{.c}
+int yes=1;
+```
+
+என்பதற்கு பதிலாக:
+
+```{.c}
+char yes='1';
+```
+
+என பயன்படுத்தவும்.
+
+என்னிடம் Sun இயங்குதளம் இல்லை. மேலுள்ள எந்த விவரத்தையும் நான் பரிசோதிக்கவில்லை. இவையாவும் எனக்கு மின்மடல்மூலமாக பகிரப்பட்டவையே.
 
 Another place that you might find problems is in the call to
 `setsockopt()`. The prototype differs from that on my Linux box, so
@@ -243,7 +274,9 @@ information---it's just what people have told me through email.
 
 
 ## Note for Windows Programmers {#windows}
+## விண்டோஸ் இயங்குதள நிரலர்களுக்கு {#windows}
 
+கையேட்டின் இந்த பகுதிக்கு 
 At this point in the guide, historically, I've done a bit of bagging on
 [i[Windows]] Windows, simply due to the fact that I don't like it very
 much. But then Windows and Microsoft (as a company) got a lot better.
