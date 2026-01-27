@@ -150,7 +150,7 @@ This document should give the average competent C programmer the edge
 s/he needs to get a grip on this networking noise.
 
 மேலும் படிக்க : நான் IPv6! க்கான கையேடினையும் செய்திருக்கிறேன்.
-அதனையும் அனுபவியுங்கள். 
+அதனையும் அனுபவியுங்கள்.
 
 And check it out: I've finally caught up with the future (just in the
 nick of time, too!) and have updated the Guide for IPv6! Enjoy!
@@ -176,10 +176,10 @@ making sense... `:-)`
 
 ## இயங்குதளம் (Platform) மற்றும் நிரல்மொழிமாற்றி (Compiler)
 
-இந்த ஆவணத்தில் இருக்கும் நிரல்கள் யாவும் ஒரு லினக்ஸ் இயங்குதளத்தில் 
+இந்த ஆவணத்தில் இருக்கும் நிரல்கள் யாவும் ஒரு லினக்ஸ் இயங்குதளத்தில்
 குனுவின் [i[Compilers-->GCC]] `gcc` நிரல்மொழிமாற்றிமூலம் நிரல்மொழிமாற்றம் செய்யப்பட்டது.
-இயற்கையாகவே நீங்கள் `gcc` யை பயன்படுத்தி எந்த ஒரு இயங்குதளத்திலும் இயக்கலாம். 
-நீங்கள் விண்டோஸ் இயங்குதளத்தினை பயன்டுத்துபவராக இருப்பின் 
+இயற்கையாகவே நீங்கள் `gcc` யை பயன்படுத்தி எந்த ஒரு இயங்குதளத்திலும் இயக்கலாம்.
+நீங்கள் விண்டோஸ் இயங்குதளத்தினை பயன்படுத்துபவராக இருப்பின் 
 ---கீழிருக்கும் பார்க்க [section on Windows programming](#windows).
 
 The code contained within this document was compiled on a Linux PC using
@@ -276,16 +276,33 @@ information---it's just what people have told me through email.
 ## Note for Windows Programmers {#windows}
 ## விண்டோஸ் இயங்குதள நிரலர்களுக்கு {#windows}
 
-கையேட்டின் இந்த பகுதிக்கு 
+கையேட்டின் இந்த பகுதியில் முன்னர் விண்டோஸில் இருக்கும் குறைபாடுகளை பற்றி கூறியிருப்பேன் ஏனெனில்
+எனக்கு விண்டோசை [i[Windows]] அவ்வளவாக பிடிக்கவில்லை. பின்னர் விண்டோசும் மைக்ரோசாப்ட்
+(ஒரு நிறுவனமாக) நிறைய முன்னேற்றம் கண்டுள்ளது. விண்டோஸ் 10 இயங்குதளம் WSL உடன் வருவதனால்
+ஒரு ஏற்கத்தக்க இயங்குதளமாக கூற இயலும். இதற்கு மேல் குற்றம் கூற எதுமில்லை.
+
 At this point in the guide, historically, I've done a bit of bagging on
 [i[Windows]] Windows, simply due to the fact that I don't like it very
 much. But then Windows and Microsoft (as a company) got a lot better.
 Windows 10 coupled with WSL (below) actually makes for a decent
 operating system. Not really a lot to complain about.
 
+சரி அது இருக்கட்டும் ஒரு சிறிய உதாரணத்துடன் கூறுகிறேன். இந்த கையேட்டினை 2015ல் வாங்கிய ஒரு
+விண்டோஸ் 10ல் இயங்கும் கணினியில் தற்போது (2025) எழுதிவருகிறேன். இந்த கணினியின் வேகம்
+மிகவும் குறைவதால் அதில் லினக்ஸ் நிறுவியுள்ளேன். மேலும் தற்போது வரை அவ்வாறே பயன்படுத்தி வருகிறேன்.
+
 Well, a little—for example, I'm writing this (in 2025) on a 2015 laptop
 that used to run Windows 10. Eventually it got too slow and I installed
 Linux on it. And have been using it ever since.
+
+அனால் தற்போது கதையே வேறு விண்டோஸ் 11 இயங்குதளத்திற்கு விண்டோஸ் 10 ஐ இயக்குவதற்கு
+தேவைப்படும் வன்பொருட்களின் தேவையைக் காட்டிலும் கணிசமான அளவு திறன்கொண்ட கணினி தேவை.
+இருப்பினும் அது என்னை பெரியளவில் ஈர்க்கவில்லை. இயங்குதளமானது தடையில்லாமல் இயங்கவேண்டும்
+தேவையில்லா செலவுகளை தரக்கூடாது. சிறிது அதிக CPU திறன் மென்பொருளுக்கு அளிக்கககூடியதாக இருக்கவேண்டும்
+இயங்குதளமே எடுத்துகொள்ளக்கூடாது. கூடுதலாக மைக்ரோசாப்டிற்கும் தெரியும் மக்கள் எதனை விரும்புகிறார்கள்.
+மக்கள் விரும்புவற்றையே அதிகமாக விளம்பரம் செய்யப்படுகிறது. சரிதானே ?
+உங்கள் இயங்குதளத்தில் எவற்றையெல்லாம் நீங்கள் இல்லாமலிருப்பதாக உணர்ந்தீர்களோ அவையெல்லாம்
+விண்டோஸ் 11 ல் இருக்கிறது.
 
 But now we have Windows 11 that apparently requires beefier hardware
 than Windows 10. I'm not a fan of that. The OS should be as unobtrusive
@@ -294,16 +311,30 @@ should be for apps, not the OS! Additionally, Microsoft knows what you
 want, and what you want is more advertising! Right? In your operating
 system! Weren't you missing that? Now you can have it with Windows 11.
 
+ஆகையால் நீங்கள் லினக்ஸ் [fl[Linux|https://www.linux.com/]], பிஎஸ்டி [i[BSD]] [fl[BSD|https://bsd.org/]],
+இலுமோஸ் [i[illumos]] [fl[illumos|https://www.illumos.org/]] அல்லது வேறு எதேனும் ஒரு யுனிக்ஸ் போன்ற 
+இயங்குதளத்தினை விண்டோஸுக்கு மாற்றாக பயன்படுத்துங்கள்.
+
 So... I still encourage you to try [i[Linux]]
 [fl[Linux|https://www.linux.com/]], [i[BSD]] [fl[BSD|https://bsd.org/]],
 [i[illumos]] [fl[illumos|https://www.illumos.org/]] or any other flavor
 of Unix instead of Windows.
 
+அந்த சோப்பு டப்பா எப்படி அங்கே சென்றது?
 How'd that soapbox get there?
+
+ஆனால் மக்கள் அவர்கள் எற்கனவே விரும்புபவற்றையே தொடர்ந்து விரும்புவார்கள் மற்றும்  
+உங்களுக்கு ஒரு சந்தோசமான விஷயம் என்னவெனில் அது பொதுவாக விண்டோஸிர்க்கும் பொருந்தும்
+சில சிறிய மாறுதல்களுடன்.
 
 But people like what they like, and you Windows folk will be pleased to
 know that this information is generally applicable to Windows, with a
 few minor changes.
+
+இன்னொரு விஷயம் நீங்கள் [i[WSL]] [i[Windows Subsystem For Linux]] [fl[Windows Subsystem for
+Linux|https://learn.microsoft.com/en-us/windows/wsl/]]. இது அடிப்படையாகவே ஒரு லினக்ஸ் 
+இயங்குதளத்தினை VM முறையில் விண்டோசில் இயங்கச்செய்வதாகும். நீங்கள் அவ்வாறு செய்யும் சூழ்நிலையில் இருந்தால்
+இந்த நிரல்களை அப்படியே எந்த மாறுதல்களுமின்றி இயக்கலாம். 
 
 One thing that you should strongly consider is [i[WSL]] [i[Windows
 Subsystem For Linux]] the [fl[Windows Subsystem for
@@ -311,20 +342,33 @@ Linux|https://learn.microsoft.com/en-us/windows/wsl/]]. This basically
 allows you to install a Linux VM-ish thing on Windows 10. That will also
 definitely get you situated, and you'll be able to build and run these
 programs as is.
-
+ 
+மற்றொறு வழி நீங்கள் [i[Cygwin]] [fl[Cygwin|https://cygwin.com/]] ஐ, நிறுவுவதன் மூலமாக 
+விண்டோஸிற்க்கான யூனிக்ஸ் கருவிகள் உதவியுடன் நிரல்களை இயக்கலாம்.
+நான் grapevine எனும் ஒரு கருவியுடன் நிரல்களை மாற்றாமல் அப்படியே நிரல்மொழிமாற்றம் செய்யலாம். ஆனால் அதை நான் முயற்சி செய்யவில்லை.
 Another thing you can do is install [i[Cygwin]]
 [fl[Cygwin|https://cygwin.com/]], which is a collection of Unix tools
 for Windows. I've heard on the grapevine that doing so allows all these
 programs to compile unmodified, but I've never tried it.
+
+உங்களில் சிலர் நினைக்கலாம் முழுமையாக விண்டோஸ் வழியிலே இதை செய்ய எண்ணலாம்.
+அதற்கு நீங்கள் செய்யவேண்டிய ஒன்று முதலில் ஒடிச்சென்று யுனிக்ஸ் கணினியில் உட்காருங்கள்.
+இல்லை இல்லை --- வேடிக்கைக்காக அவ்வாறு கூறினேன்.
+நான் தற்போது மிகவும் விண்டோசுக்கு நட்பாக செயல்படுகிறேன்.
 
 Some of you might want to do things the Pure Windows Way. That's very
 gutsy of you, and this is what you have to do: run out and get Unix
 immediately! No, no---I'm kidding. I'm supposed to be
 Windows-friendly(er) these days...
 
+சரி சரி. வாங்க விஷயத்துக்கு போவோம். 
 Okay, okay. I'll get on with it.
 
 [i[Winsock]]
+
+முதலில் விண்டோஸ் கணிணியில் நீங்கல் செய்யவேண்டியது.
+மேற்கூறிய தலைப்பு கோப்புகளையெல்லாம் விட்டு விடுங்கள்.
+விண்டோஸ் நிரலாலராக இருப்பின் கீழுள்ளவற்றை நிரலில் சேருங்கள். 
 
 This is what you'll have to do: first, ignore pretty much all of the
 system header files I mention in here. Instead, include:
@@ -334,13 +378,21 @@ system header files I mention in here. Instead, include:
 #include <ws2tcpip.h>
 ```
 
+`winsock2` ஆனது புதிய (circa 1994) விண்டோஸ் சாக்கெட்டிற்கான C நூலகம்.
+
 `winsock2` is the "new" (circa 1994) version of the Windows socket
 library.
+
+துரதிஷ்டவசசமாக, நீங்கள் `windows.h` ஐ சேர்த்துக்கொண்டால் அது தானாகவே பழைய
+`winsock.h` (version 1) தலைப்பு கோப்பினை எடுத்துக்கொள்ளும் அவ்வாறு எடுத்துகொள்ளும்போது
+`winsock2.h` உடனான மோதலைக் காணலாம். ஆகவே அவ்வாறு செய்யதீர்கள்.
 
 Unfortunately, if you include `windows.h`, it automatically pulls in
 the older `winsock.h` (version 1) header file which conflicts with
 `winsock2.h`! Fun times.
 
+அப்படியே நீங்கள் `windows.h` ஐ பயன்படுத்தியே ஆகவேண்டிய சூழலில் மாக்ரோ ஒன்றினை பயன்படுத்தி
+அந்த பழைய தலைப்புகோப்பினை சேர்க்காமல் தவிற்கவும்.
 So if you have to include `windows.h`, you need to define a macro to get
 it to _not_ include the older header:
 
@@ -351,12 +403,17 @@ it to _not_ include the older header:
 #include <winsock2.h>        // And this.
 ```
 
+சற்று பொறுங்கள் நீங்கள் [i[`WSAStartup()` function]] `WSAStartup()` செயற்கூறினை  சாக்கெட் நூலகத்தினை பயன்படுத்தி
+வேறேதும் செய்யும் முன்னர் முதலில் அழைக்கவேண்டும். நிரலுக்கு தேவையான விண்டோஸ் சாக்கெட்டின் பதிப்பை இதில் அளிக்கவும்
+(எ.கா 2.2) இதை அளிப்பதன் மூலம் நமக்கு தேவைப்படும் சாக்கெட் நூலகம் கிடைக்கிறதா என தெரிந்து கொள்ளலாம்.
+
 Wait! You also have to make a call to [i[`WSAStartup()` function]]
 `WSAStartup()` before doing anything else with the sockets library. You
 pass in the Winsock version you desire to this function (e.g. version
 2.2). And then you can check the result to make sure that version is
 available.
 
+நீங்கள் எழுதும் நிரல் கீழே கொடுத்துள்ளது போல்கூட இருக்கலாம்.
 The code to do that looks something like this:
 
 ```{.c .numberLines}
@@ -378,9 +435,19 @@ The code to do that looks something like this:
         exit(2);
     }
 ```
+குறிப்பு : சாக்கெட்டிற்கான செயல்பாடுகள் முடிந்தவுடன் [i[`WSACleanup()` function]] `WSACleanup()` செயற்கூறினை
+அழைக்கவும்.
 
 Note that call to [i[`WSACleanup()` function]] `WSACleanup()` in there.
 That's what you want to call when you're done with the Winsock library.
+
+நீங்கள் விண்சாக் (Winsock) நூலகத்தினை நிரல்மொழிமாற்றியுடன் இணைக்கவேண்டும்.
+VC++ ன் கீழ் `ws2_32.lib` எனும் நூலகம் உள்ளது அதை பயன்படுத்தி இணைப்பினை செய்யவேண்டும்.
+இதனை செய்ய `Project` பட்டியின் கீழ் `Settings...`ல் உள்ள `Link` துணைப்பட்டியில் ஒரு
+`"Object/library modules"` எனும் பெயரில் ஒருஅமைப்பு இருக்கும் அதிலிருந்து `ws2_32.lib`
+யை பயன்படுத்திக்கொள்ளவும்.
+
+
 
 You also have to tell your compiler to link in the Winsock library,
 called `ws2_32.lib` for Winsock 2. Under VC++, this can be done through
