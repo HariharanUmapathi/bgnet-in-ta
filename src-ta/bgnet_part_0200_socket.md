@@ -1,10 +1,27 @@
 # What is a socket?
+# சாக்கெட் என்பது என்ன?
+
+"சாக்கெட்" எனும் சொல்லை பல இடங்களில் நீங்கள் பயன்படுத்த கேட்டிருக்கலாம் ஆனால்
+அது என்ன என்பது உண்மையில் குறித்து நீங்கள் யோசித்திருக்கலாம்.நல்லது
+சுருக்கமாக சொல்லவேண்டுமென்றால் 
+
+```
+'சாக்கெட்டுகள்' என்பது நிரல்கள் பிறநிரல்களுடன் யூனிக்ஸ் 
+கோப்பு அடையாளங்காட்டி (file descriptor) மூலம் பிற நிரல்களுடன் தொடர்புகொள்ளும் ஒரு வழி ஆகும்.
+```
 
 You hear talk of "sockets" all the time, and perhaps you are wondering
 just what they are exactly. Well, they're this: a way to speak to other
 programs using standard Unix [i[File descriptor]] file descriptors.
 
 What?
+என்ன?
+
+சரி---சில யூனிக்ஸ் வல்லுநர்கள் கூறுவதை நீங்கள் கேட்டிருக்கலாம், "கடவுளே, யூனிக்ஸ்-ல் _எல்லமே_ ஒரு கோப்புதான்!""
+அந்த வல்லுநர்கள் குறிப்பிடுவது எல்லாம் யூனிக்ஸ் நிரல்கள் எந்த வகையான உள்ளீடு/வெளியீடு (I/O) செயல்களை செய்யும் போதும் அது ஒரு கோப்பு அடையாளங்காட்டியினை படிக்கிறது அல்லது அதில் எழுதுகிறது. ஒரு கோப்பு அடையாளங்காட்டி எனப்படுவது யாதெனில் திறந்துள்ள கோப்பினை அடையாளம் காட்டும் ஒர் முழுஎண்(integer) ஆகும்.
+
+ஒரு கோப்பிற்கும் நெட்வொர்கிற்கும் என்ன சம்மந்தம் என்று ஒரு கேள்வி வருகிறதா?
+அதற்கான புரிதல்கொள்ள இந்த கோப்பு அடையாளங்காட்டியை நெட்வொர்க் மூலமாகவும் அனுக முடியும் என்று புரிந்து கொள்ளுங்கள். மேலும் அந்த கோப்பு ஒரு பிஃப்போ(FIFO), ஒரு பைப்(pipe),ஒரு முனையம் (terminal) (அ) ஒரு வட்டில் இருக்ககூடிய ஒரு கோப்பு என எந்த வகையிலும் இருக்கலாம். அகையால் நீங்கள் இணையத்தில் பிற நிரல்களுடன் தொடர்புகொள்ள ஒரு கோப்பு அடையாளங்காட்டியை பயன்படுத்தலாம்.  
 
 Ok---you may have heard some Unix hacker state, "Jeez, _everything_ in
 Unix is a file!" What that person may have been talking about is the
@@ -16,6 +33,11 @@ file, or just about anything else.  Everything in Unix _is_ a file! So
 when you want to communicate with another program over the Internet
 you're gonna do it through a file descriptor, you'd better believe it.
 
+சரி, திரு. அறிவுக்கொழுந்தே நான்  இந்த நெட்வொர்க் மூலம் தொடர்புகொள்ளும் கோப்பு அடையாளங்காட்டியை பற்றி எப்படி அறிவது என உங்களின் மனம் கூறுவதை நான் அறிகிறேன்.
+ஆகவே அதற்கான பதிலை பார்க்க தொடங்குவோம்.
+நீங்கள்  [i[`socket()` function]] `socket()` அமைப்பு செயற்கூறினை அழைப்பீர்கள். அந்த செயற்கூறானது ஒரு சாக்கெட் அடையாளங்காட்டியை தரும் நீங்கள் அந்த சாக்கெட் அடையாளங்காட்டியை [i[`send()` function]] `send()` செயற்கூறினை பயன்படுத்தி அதற்கு உள்ளீடு அளிப்பீர்கள் மற்றும் [i[`recv()` function]] `recv()` செயற்கூறினை பயன்படுத்தி  வெளியீட்டினை படிப்பீர்கள்.
+மேலும் விவரங்களுக்கு : ([`man send`](#sendman), [`man recv`](#recvman)) சாக்கெட் செயற்கூறுகளை படித்து பாருங்கள்.
+
 "Where do I get this file descriptor for network communication, Mr.
 Smarty-Pants?" is probably the last question on your mind right now, but
 I'm going to answer it anyway: You make a call to the [i[`socket()`
@@ -23,6 +45,9 @@ function]] `socket()` system routine. It returns the [i[Socket
 descriptor]] socket descriptor, and you communicate through it using the
 specialized [i[`send()` function]] `send()` and [i[`recv()` function]]
 `recv()` ([`man send`](#sendman), [`man recv`](#recvman)) socket calls.
+
+"ஆஹ்!" நீங்கள் ஆச்சரியம் கொள்வது எனக்கு புரிகிறது. ஒரு கோப்பு அடையாளங்காட்டி எனில் நான் சாதாரணமாக [i[`read()` function]] `read()` and [i[`write()` function]] `write()` எனும் செயற்கூறுகள் வழியே பயன்படுத்த இயலுமே ஆனால் நான் ஏன்
+[i[`send()` function]] `send()` மற்றும் [i[`recv()` function]] `recv()` செயற்கூறுகளை பயன்படுத்தும் போது தரவு அனுப்பி பெறுதலில் நிறைய கட்டுப்பாட்டினை அளிக்கிறது.
 
 "But, hey!" you might be exclaiming right about now. "If it's a file
 descriptor, why in the name of Neptune can't I just use the normal
@@ -32,6 +57,12 @@ can!"  The longer answer is, "You can, but [i[`send()` function]]
 `send()` and [i[`recv()` function]] `recv()` offer much greater control
 over your data transmission."
 
+சரி பின்னர் என்ன இருக்கிறது? பல வகையான சாக்கெட்டுகள் இருக்கின்றன, இணைய சாக்கெட்டுகள் DARPA Internet addresses (Internet Sockets), 
+கணினியில் இருக்கும் கோப்பு பெயர்கள் (Unix Sockets),
+CCITT X.25 addresses (X.25 சாக்கெட்டுகளை நீங்கள் தவிற்துவிடலாம்.)
+மேலும் யூனிக்ஸின் எந்த அமைப்பை பயன்டுத்துகிறீர்கள் என்பதை பொருத்து இன்னும் சாக்கெட் வகைகளின் பட்டியல் சற்று நீளமானதாக கூட இருக்கலாம்.
+இந்த ஆவணமானது முதல் வகை இணைய சாக்கெட்டுகளை பற்றி மட்டுமே பேசப்போகிறது.
+
 What next? How about this: there are all kinds of sockets. There are
 DARPA Internet addresses (Internet Sockets), path names on a local node
 (Unix Sockets), CCITT X.25 addresses (X.25 Sockets that you can safely
@@ -40,12 +71,26 @@ run.  This document deals only with the first: Internet Sockets.
 
 
 ## Two Types of Internet Sockets
+## இரு வகையான இணைய சாக்கெட்டுகள்
+
+என்ன இது? மீண்டும் இரு வகைகளா? ஆம்.
+சற்றே சரியாக கூறவேண்டுமென்றால் நான் பொய்தான் கூறுகிறேன்.
+இன்னும் நிறைய வகைகள் இருக்கின்றன நான்  இணைய சாக்கெட்டுகளின் இரு வகைகளைப்பற்றி மட்டுமே குறிப்பிட போகிறேன். பின்வரும் ஒரு சொற்றொடரில் மட்டும் மேற்கூறியதை தவிர்த்து விடுங்கள். நான் [i[Raw sockets]] "Raw Sockets" என்று ஒன்றும் இருக்கிறது அதைப்பற்றி நீங்களே அறித்துகொள்ளுங்கள்.
 
 What's this? There are two types of Internet sockets? Yes. Well, no. I'm
 lying. There are more, but I didn't want to scare you.  I'm only going
 to talk about two types here. Except for this sentence, where I'm going
 to tell you that [i[Raw sockets]] "Raw Sockets" are also very powerful
 and you should look them up.
+
+சரி மீண்டும் தலைப்பிற்கே வருவோம் அந்த இருவகை இனைய சாக்கெட்டுளில் 
+ஒன்று [i[Stream sockets]]  "Stream சாக்கெட்டுகள்"
+மற்றொன்று [i[Datagram sockets]] "Datagram சாக்கெட்டுகள்"
+பின்வரும் பகுதிகளில் அவற்றை முறையே [i[`SOCK_STREAM` macro]] "`SOCK_STREAM`"
+[i[`SOCK_DGRAM` macro]] "`SOCK_DGRAM`" என பயன்படுத்துவோம். 
+"Datagram சாக்கெட்டுகள்" [i[`connect()` function]] `connect()`' செயல்கூறினை கொண்டிருந்தாலும்  
+சில சமயங்களில் இணைப்பில்லா சாக்கெட்டுகள் என்று அழைக்கப்படுவதுண்டு.
+மேலும் அறிய கீழேயுள்ள [`connect()`](#connect) பகுதியை படியுங்கள்.
 
 All right, already. What are the two types? One is [i[Stream sockets]]
 "Stream Sockets"; the other is [i[Datagram sockets]] "Datagram Sockets",
@@ -55,6 +100,13 @@ respectively. Datagram sockets are sometimes called "connectionless
 sockets".  (Though they can be [i[`connect()` function]] `connect()`'d
 if you really want. See [`connect()`](#connect), below.)
 
+Stream சாக்கெட் மிகவும் நம்பகமான இருவழி தொடர்பு இணைப்பு.
+நீங்கள் இரு தரவுகளை இதில் அனுப்பினால் உதாரணமாக 1 , 2 என்பதை அனுப்புகிறீர்கள்
+எனக் கொள்வோம். தகவல் பெறும்முனையிலும் தகவல் அதே வரிசையில் 1,2 என்றே கிடைக்கும்.
+மேலும் அவை பிழைகள் இல்லாமல் இருக்கும். இதன் நம்பகத்தன்மை எந்த அளவிற்கு இருக்குமெனில்
+யாரேனும் இதற்கு மறுப்பு தெரிவித்து மல்லுக்கு வந்தால் நான் கவலையில்லாமல் காதுகளை பொத்திக்கொண்டு
+லா லா லா லா என எதேனும் ஒன்றினை உளறிக்கொண்டிருக்கலாம்.
+
 Stream sockets are reliable two-way connected communication streams. If
 you output two items into the socket in the order "1, 2", they will
 arrive in the order "1, 2" at the opposite end. They will also be
@@ -62,7 +114,8 @@ error-free. I'm so certain, in fact, they will be error-free, that I'm
 just going to put my fingers in my ears and chant _la la la la_ if
 anyone tries to claim otherwise.
 
-What uses stream sockets? Well, you may have heard of the [i[telnet]]
+ஒடை சாக்கெட்டுகள்
+What uses stream sockets? Well, you m have heard of the [i[telnet]]
 `telnet` or `ssh` applications, yes? They use stream sockets. All the
 characters you type need to arrive in the same order you type them,
 right? Also, web browsers use the Hypertext Transfer Protocol [i[HTTP
