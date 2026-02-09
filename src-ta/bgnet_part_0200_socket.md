@@ -114,7 +114,14 @@ error-free. I'm so certain, in fact, they will be error-free, that I'm
 just going to put my fingers in my ears and chant _la la la la_ if
 anyone tries to claim otherwise.
 
-ஒடை சாக்கெட்டுகள்
+ஒடை சாக்கெட்டுகளின் பயன்தான் என்ன? நீங்கள் [i[telnet]] `telnet` அல்லது [i[ssh]] `ssh`
+போன்ற பயன்பாடுகளை பற்றி கேள்விபட்டிருக்கலாம் அவை stream சாக்கெட்டுகளையே பயன்படுத்துகின்றன.
+நமக்கு அனுப்பியவை அனுப்பிய வரிசையிலே மறுமுனைக்கு சென்று சேரவேண்டுமல்லவா ?
+மேலும் வலை உலவிகள்  மீஉரை நெறிமுறையை [i[HTTP protocol]] (HTTP) பின்பற்றுகிறது.
+மீஉரை நெறிமுறையை வலைப்பக்கங்களை பெறுவதற்கு  stream சாக்கெட்டுகளையே பயன்படுத்துகிறது.
+உதாராமாக நீங்கள் telnet பயன்படுத்தி பின்வரும் கட்டளையை உள்ளிட்டு இருமுறை RETURN விசையை தட்டினால்
+அந்த வலைப்பக்கத்தின் உள்ளடக்கம் தங்களுக்கு வெளியீடாக கிடைக்கும்.
+
 What uses stream sockets? Well, you m have heard of the [i[telnet]]
 `telnet` or `ssh` applications, yes? They use stream sockets. All the
 characters you type need to arrive in the same order you type them,
@@ -123,6 +130,14 @@ protocol]] (HTTP) which uses stream sockets to get pages. Indeed, if you
 telnet to a web site on port 80, and type "`GET / HTTP/1.0`" and hit
 RETURN twice, it'll dump the HTML back at you!
 
+> உங்களிடம் `telnet` நிறுவிய கணினி இல்லையா ? நீங்கள் நிறுவ விரும்பவில்லையா
+> (அ) உங்களின் `telnet` ஆனது குறிப்பிட்ட வேலைகளுக்கு மட்டும் வேலை செய்கிறதா?
+> கவலையை விடுங்கள் இந்த கையேட்டுடன் `telnet` போன்றதொரு பயன்பாட்டினை
+> [flx[`telnot`|telnot.c]] அளிக்கிறேன்.
+> இந்த பயன்பாடானது கையேட்டின் எல்லா தேவகளுக்கும் பொருந்துமாறு இருக்கும்.
+> கவனத்தில் கொள்க : telnet ஆனது ஒரு [flrfc[spec'd networking protocol|854]], மற்றும்
+> `telnot` அனது இந்த நெறிமுறையை பயன்படுத்தி வடிவமைக்கப்படவில்லை.
+
 > If you don't have `telnet` installed and don't want to install it, or
 > your `telnet` is being picky about connecting to clients, the guide
 > comes with a `telnet`-like program called [flx[`telnot`|telnot.c]].
@@ -130,7 +145,15 @@ RETURN twice, it'll dump the HTML back at you!
 > telnet is actually a [flrfc[spec'd networking protocol|854]], and
 > `telnot` doesn't implement this protocol at all.)
 
-How do stream sockets achieve this high level of data transmission
+stream சாக்கெட்டுக்களின் இந்த அதிகளவு தரவு பரிமாற்ற நம்பகத்தன்மைக்கு காரணம் என்ன?
+சாக்கெட்டுகள் பயன்படுத்தும் TCP "The Transmission Control Protocol" தரவுபரிமாற்ற நெறிமுறைதான் காரணம்.
+இது TCP என்று சுருக்கமாக அறியப்படுகிறது.(TCP பற்றிய அதிக விவரங்களுக்கு பார்க்க) [i[TCP]]
+"TCP" ([flrfc[RFC 793|793]]).
+நீங்கள் TCP ஐ IP உடன் சேர்த்தவாறு பார்த்திருக்கலாம். இங்கு "IP" ஐ
+இணைய நெறிமுறை என்றவாறு அர்த்தம் கொள்ளவும் (பார்க்க [flrfc[RFC 791|791]]).
+IP ஆனது முதன்மையாக இணைய இணைப்பின் வழிகாட்டுதலுக்கு பயன்படுகிறது மற்றும் தரவு முழுமைக்கான பொறுப்பேற்க்கவில்லை.
+
+sockets achieve this high level of data transmission
 quality?  They use a protocol called "The Transmission Control
 Protocol", otherwise known as [i[TCP]] "TCP" (see [flrfc[RFC 793|793]]
 for extremely detailed info on TCP). TCP makes sure your data arrives
