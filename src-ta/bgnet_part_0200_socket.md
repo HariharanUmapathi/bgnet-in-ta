@@ -230,12 +230,22 @@ until he finally gets an ACK. This acknowledgment procedure is very
 important when implementing reliable `SOCK_DGRAM` applications.
 
 விளையாட்டுகள், ஒலி அல்லது ஒளி படங்கள் போன்ற நிலைத்தன்மை இல்லாத பயன்பாடுகளில் சில பாக்கெட் தரவிழப்புகள்
-அல்லது மிகவும் சாமர்த்தியமாக அமைக்கப்படும் தரவிழப்பு தடுப்பு அமைப்புகள், 
+அல்லது மிகவும் சாமர்த்தியமாக அமைக்கப்படும் தரவிழப்பு தடுப்பு அமைப்புகள் அதைப் பார்த்துக்கொள்ளும்.
+(Quake செயலிகள் இந்த வகையான பிழைகளை _accursed lag_ எனும் சொல் மூலம் குறிப்பிடுகின்றன.
+இதில் "accursed" எனப்படுவது எந்த ஒரு மிகவும் எற்கத்தகாத தரவிழப்புகளை குறிப்பிடுகிறது : rephrase latter help needed;) 
+
 For unreliable applications like games, audio, or video, you just ignore
 the dropped packets, or perhaps try to cleverly compensate for them.
 (Quake players will know the manifestation of this effect by the
 technical term: _accursed lag_.  The word "accursed", in this case,
 represents any extremely profane utterance.)
+
+என்னதான் தரவிழப்புகளைக் கொண்டிருந்தாலும் ஏன் இதைப் பயன்படுத்துகிறோம். இரண்டு காரணம் : வேகம்! வேகம்!!.
+இது வேகமானது அனுப்பு மற்றும் மறந்துவிடு கோட்பாடிட்னை முதன்மையாக கொண்டு இயங்குகிறது அதனுனைய
+தற்போதய நிலையைப்பற்றி அதாவது எவையெல்லாம் வந்து சேர்ந்தது எந்த வரிசையில் வந்தது என்றெல்லாம் கவலைப்படுவதில்லை.
+நீங்கள் ஒரு அரட்டை செய்திகளை பகிர  TCP சிறந்தது. நீங்கள் 40 இட புதுப்பிப்புகளை உலகத்தின் வெவ்வேறு மூலைகளிலுள்ள
+20 ஆட்டக்காரர்களுக்கு அனுப்புகிறீர்கள் எனக்கொள்வோம் அதில் ஒன்றிரண்டு இழப்புகள் சகித்துக்கொள்ளக்கூடியவையே.
+அவ்வாறான பயன்பாடுகளுக்கு UDP சிறந்தது.
 
 Why would you use an unreliable underlying protocol? Two reasons: speed
 and speed. It's way faster to fire-and-forget than it is to keep track
@@ -245,15 +255,24 @@ positional updates per second of the players in the world, maybe it
 doesn't matter so much if one or two get dropped, and UDP is a good
 choice.
 
-
-## Low level Nonsense and Network Theory {#lowlevel}
-
+## கீழ்நிலை மற்றும் நெட்வொர்க் கோட்பாடுகள் {#lowlevel}
+நான் இதுவரை குறிப்பிட்டது நெறிமுறைகளை எவ்வாறு பயன்பாட்டிற்கு எற்ப அடுக்கி பயன்படுத்துவது என்பதுதான்.
+இப்போது நெட்வொர்க்குகள் எப்படி அடிப்படையில் செயல்படுகின்றன என்பதையும்  [i[`SOCK_DGRAM` macro]] `SOCK_DGRAM` 
+பாக்கெட்டுகளை எவ்வாறு உருவாக்குவது என்பதையும் காணலாம். எப்படி இருப்பினும் இது ஒரு நல்ல பின்புல அறிவை அளிக்கும்.
+நீங்கள் வேண்டுமென்றால் இந்த பகுதியை தவிற்கலாம்.
 Since I just mentioned layering of protocols, it's time to talk about
 how networks really work, and to show some examples of how
 [i[`SOCK_DGRAM` macro]] `SOCK_DGRAM` packets are built.  Practically,
 you can probably skip this section. It's good background, however.
 
 ![Data Encapsulation.](dataencap.pdf "[Encapsulated Protocols Diagram]")
+
+குழந்தைகளே! _Data Encapsulation_ [i[Data encapsulation]] எனும் அவசியமான ஒன்றை பற்றி
+கற்கும் தருணம் இது. இது எவ்வளவு முக்கியம் என்றால் நீங்கள் சிக்கோ மாகாணத்தில் network படித்தால்
+நீங்கள் கண்டிப்பாக அதை அறிவீர்கள்.
+அடிப்படையில் இது நெட்வொர்க் பாக்கெட் உருவாக்கப்படும்போது அது முதல் நெறிமுறையின் ஒரு தலைப்பு [i[Data enacapsulation-->header]] மூலம் சுற்றப்படுகிறது.
+(சில சமயங்களில் [i[Data encapsulation-->footer]] அடிக்குறிப்பும் (footer) முதல் நெறிமுறையின் மூலம் உருவ்வாக்கப்படுகிறது.)
+உதாரணமாக [i[TFTP]] TFTP நெறிமுறையை ஐ எடுத்துகொள்வோம்.
 
 Hey, kids, it's time to learn about [i[Data encapsulation]] _Data
 Encapsulation_! This is very very important. It's so important that you
@@ -266,6 +285,10 @@ header included) is encapsulated again by the next protocol (say,
 [i[UDP]] UDP), then again by the next [i[IP]] (IP), then again by the
 final protocol on the hardware (physical) layer (say, [i[Ethernet]]
 Ethernet).
+
+மற்றொரு கணினி ஒரு பாக்கெட்டினை பெறும்போது வன்பொருளானது ஈதர்நெட் தலைப்பை எடுத்துவிடுகிறது kernel அனது IP
+மற்றும் UDP தலைப்புகளை எடுத்துவிடுகிறது. TFTP பயன்பாடு TFTP தலைப்பை எடுத்துவிடுகிறது எல்ல தலைப்புகளையும்
+எடுத்த பிறகு மீதம் இருப்பது தரவு மட்டுமே.
 
 When another computer receives the packet, the hardware strips the
 Ethernet header, the kernel strips the IP and UDP headers, the TFTP
