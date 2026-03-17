@@ -294,6 +294,14 @@ When another computer receives the packet, the hardware strips the
 Ethernet header, the kernel strips the IP and UDP headers, the TFTP
 program strips the TFTP header, and it finally has the data.
 
+இப்போது நான் முடிவாக மிகவும் அரிய [i[Layered network model]]
+[i[ISO/OSI]] _Layered Network Model_ (aka "ISO/OSI") பற்றி கூற உள்ளேன்.
+இந்த நெட்வொர்க் மாதிரியானது பிற நெட்வொர்க் மாதிரிகளை காட்டிலும் பல்வேறு நெட்வொர்க் செயல்பாட்டு அகமைப்பை விளக்குகிறது.
+இதை அறிந்து கொள்வதில் பல்வேறு ஆதாயங்கள் உள்ளன. உதாரணமாக நீங்கள் வெவ்வேறு வகையான இணைப்புகளை
+(serial, thin Ethernet, AUI) கொண்டிருந்தாலும் இணைப்புகளை பற்றி கவலைப்படாமல் ஒரே மாதிரியாக சாக்கெட் நிரல் எழுதலாம்
+ஏனெனில் நிரல்கள் கீழ்நிலையில் (lower levels) நமக்காக எல்லவற்றையும் செய்கிறது.
+உண்மையான நெட்வொர்க் வன்பொருள் மற்றும் நெட்வொர்க் வலையமைப்பு சாக்கெட் நிரலருக்கு வெளிப்படையாக இருக்கும்.
+  
 Now I can finally talk about the infamous [i[Layered network model]]
 [i[ISO/OSI]] _Layered Network Model_ (aka "ISO/OSI"). This Network Model
 describes a system of network functionality that has many advantages
@@ -302,6 +310,17 @@ exactly the same without caring how the data is physically transmitted
 (serial, thin Ethernet, AUI, whatever) because programs on lower levels
 deal with it for you. The actual network hardware and topology is
 transparent to the socket programmer.
+
+மேலும் தாமதம் செய்யாமல் நான் நெட்வொர்க் மாதிரியின் அடுக்குகளை பற்றி கூறுகிறேன்.
+இதை நெட்வொர்க் வகுப்பிற்காக நினைவில் கொள்ளுங்கள்.
+
+* பயன்பாடு (Application)
+* காட்சிப்படுத்தல் (Presentation)
+* அமர்வு (Session)
+* போக்குவரத்து (Transport)
+* நெட்வொர்க் (Network)
+* தரவு இணைப்பு (Data Link)
+* இயற்பியல் (Physical)
 
 Without any further ado, I'll present the layers of the full-blown
 model.  Remember this for network class exams:
@@ -314,9 +333,23 @@ model.  Remember this for network class exams:
 * Data Link
 * Physical
 
+இயற்பியல் அடுக்கமானது வன்பொருளை குறிப்பிடுகிறது (தொடர் (serial),ஈதர்நெட், பிற.)
+பயன்பாட்டு அடுக்கம்மாணது இயற்பியல் ஆடுக்கத்திலிருந்து ஒரு நீண்ட தொலைவில் இருக்கும் ஒன்றாக நினைத்துக்கொள்ளுங்கள்.
+பயனர்கள் நெட்வொர்க் உடன் உரையாடும் இடம்.
 The Physical Layer is the hardware (serial, Ethernet, etc.). The
 Application Layer is just about as far from the physical layer as you
 can imagine---it's the place where users interact with the network.
+
+இப்போது இந்த மாதிரி மிகவும் பொதுவானதாகும் நீங்கள் ஒரு வாகனம் பழுதுபார்க்கும் ஒரு
+கையேடாக இதைக்கூட பயன்படுத்திக்கொள்ளலாம். ஒரு அடுக்கப்பட்ட மாதிரி Unixல்
+இவ்வாறாக இருக்கலாம்.
+
+* பயன்பாட்டு அடுக்கு (_telnet, ftp, etc._)
+* கணினி-கணினி போக்குவரத்து அடுக்கு (_TCP, UDP_)
+* இணைய அடுக்கு (_IP and routing_)
+* நெட்வொர்க் அணுகள் அடுக்கு (_Ethernet, wi-fi, or whatever_)
+
+இந்த நேரத்தில் அடுக்கங்கள் தரவு அருவமாக்கலை எப்படி கையாளுகின்றன என அறியலாம்.
 
 Now, this model is so general you could probably use it as an automobile
 repair guide if you really wanted to. A layered model more consistent
@@ -330,6 +363,12 @@ with Unix might be:
 At this point in time, you can probably see how these layers correspond
 to the encapsulation of the original data.
 
+ஒரு எளிய நெட்வொர்க் பாக்கெட்டினை உருவாக்குகையில் எவ்வளவு வேலை செய்யப்படுகிறது? கடவுளே ! 
+ஒரு வேடிக்கைக்காக நீங்கள் "`cat`"! கட்டளையை பயன்படுத்தி பாக்கெட் தலைப்புகளை உள்ளிடுவதை எண்ணிப்பாருங்கள்.
+சரி விசயத்திற்கு வருவோம் நீங்கள் stream சாக்கெட்டுகளை பயன்படுத்தும் போது [i[`send()` function]] `send()` செயற்கூறை பயன்படுத்தி தரவை அனுப்புங்கள். 
+datagram சாக்கெட்டுகளை பயன்படுத்தும் போது [i[`sendto()` function]] `sendto()` செயற்கூறை பயன்படுத்தி தரவை அனுப்புங்கள் அவ்வளவுதான்.
+kernel ஆனது போக்குவரத்து அடுக்கினையும் இணைய அடுக்கையும் உங்களுக்காக சரியான வகையில் பயன்படுத்திகொள்ளும். அஹ்! என்ன ஒரு நவீன தொழில்நுட்பம்.
+
 See how much work there is in building a simple packet? Jeez! And you
 have to type in the packet headers yourself using "`cat`"! Just kidding.
 All you have to do for stream sockets is [i[`send()` function]] `send()`
@@ -338,6 +377,12 @@ packet in the method of your choosing and [i[`sendto()` function]]
 `sendto()` it out. The kernel builds the Transport Layer and Internet
 Layer on for you and the hardware does the Network Access Layer. Ah,
 modern technology.
+
+இதோடு நமது நெட்வொர்க் கருத்த்ருக்களை சுருக்கமாக முடித்துகொள்வோம். ஆம் நான் routing பற்றி கூறவந்ததைதை நான் கூற மறந்துவிட்டேன்.
+router ஆனது பாக்கெட்டுகளின் தலைப்புகளை பிரித்து தனது routing அட்டவணையை பார்த்து சரியான முகவரிக்கு பாக்கெட்டுகளை கடத்துகிறது.
+இதைத்தவிர எனக்கு கூற அதைப்பற்றி ஒன்றுமில்லை.
+இதற்கு மேலும் நீங்கள் தெரிந்துகொள்ள எண்ணினால் [i[Blah blah blah]] _blah blah
+blah_ [flrfc[IP RFC|791]]. நீங்கள் அதைப்பற்றி எப்போதும் கற்றுகொள்ளவில்லையேல் நீங்கள் வாழ்வீர்கள்.
 
 So ends our brief foray into network theory. Oh yes, I forgot to tell
 you everything I wanted to say about routing: nothing! That's right, I'm
