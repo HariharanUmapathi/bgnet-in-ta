@@ -1,7 +1,13 @@
+# IP முகவரிகள், `struct`கள் மற்றும்  தரவு சுத்தப்படுத்துதல். 
 # IP Addresses, `struct`s, and Data Munging
 
+விளையாட்டில் குறியீட்டைப்பற்றி பேசக்கூடிய ஒரு இடத்திற்கு நாம் வந்துள்ளோம்.
 Here's the part of the game where we get to talk code for a change.
 
+அதற்கு முன்பாக, குறியீடு இல்லாமல் சற்று விரிவாக கலந்துரையாடிவிடுவோம். 
+[i[IP address]] IP முகவரிகள் மற்றும் துறைகள் பற்றி தொடங்கிய கொஞ்சம் விசயங்களை முதலில் முடித்துக்கொள்வோம்.
+பின்னர் சாக்கெட் API எப்படி IP முகவரிகளையும் பிற தரவுகளையும் எவ்வாறு கையாள்கிறது என்பது பற்றி விரிவாக பார்ப்போம்.
+ 
 But first, let's discuss more non-code! Yay! First I want to talk about
 [i[IP address]] IP addresses and ports for just a tad so we have that
 sorted out.  Then we'll talk about how the sockets API stores and
