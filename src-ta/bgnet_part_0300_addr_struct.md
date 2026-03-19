@@ -13,8 +13,13 @@ But first, let's discuss more non-code! Yay! First I want to talk about
 sorted out.  Then we'll talk about how the sockets API stores and
 manipulates IP addresses and other data.
 
-
+## IP முகவரிகள், பதிப்பு 4 மற்றும் 6 
 ## IP Addresses, versions 4 and 6
+
+முற்காலங்களில் ஒபி வான் கெனொபி எனும் நபர் பென் கெனோபி என அழைக்கப்பட்ட காலத்தில் ஒரு அருமையான நெட்வொர்க் வழிமுறை
+அமைப்பு இப்போதும் அது பயனில் இருக்கிறது. அதன் பெயர்  The Internet Protocol Version 4, also called [i[IPv4]] IPv4.
+இந்த அமைப்பில் காணப்படும் முகவரிகள் நான்கு பைட்டுகளை கொண்டிருக்கும் குறிப்பிடப்படும் போது முகவரிகள் புள்ளிகள் மற்றும் எண்களால்
+குறிப்பிடப்படும். எடு : `192.0.2.111`.
 
 In the good old days back when Ben Kenobi was still called Obi Wan
 Kenobi, there was a wonderful network routing system called The Internet
@@ -22,11 +27,15 @@ Protocol Version 4, also called [i[IPv4]] IPv4. It had addresses made up
 of four bytes (A.K.A.  four "octets"), and was commonly written in "dots
 and numbers" form, like so: `192.0.2.111`.
 
+இதேபோல நீங்கள் முகவரிகளை நிறைய பார்த்திருக்கக்கூடும்.
 You've probably seen it around.
 
+இதை எழுதும்போது இணையதளத்தில் உள்ள வலைதளங்களும் IPv4 ஐ தான் பயன்படுத்துகின்றன.
 In fact, as of this writing, virtually every site on the Internet uses
 IPv4.
 
+ஓபி வான் உட்பட்ட அனைவருக்கும் மகிழ்ச்சி.வலைதளங்கள் எல்லாம் சரியாக பயன்படுத்தப்பட்டு வந்துகொண்டிருந்த வேளையில்
+வின்ட் செர்ப் ஒரு எச்சரிக்கை விடுக்கிறார் அது யாதெனில் நாம் விரைவில் IPv4 பற்றாக்குறை எற்படப்போகிறது என்பதாகும்.
 Everyone, including Obi Wan, was happy. Things were great, until some
 naysayer by the name of Vint Cerf warned everyone that we were about to
 run out of IPv4 addresses!
