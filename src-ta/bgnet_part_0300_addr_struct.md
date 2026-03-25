@@ -39,17 +39,24 @@ IPv4.
 Everyone, including Obi Wan, was happy. Things were great, until some
 naysayer by the name of Vint Cerf warned everyone that we were about to
 run out of IPv4 addresses!
-
+(இந்த எச்சரிக்கைக்கு அப்பால் ) :need improvement
 (Besides warning everyone of the Coming IPv4 Apocalypse Of Doom And
 Gloom, [i[Vint Cerf]] [flw[Vint Cerf|Vint_Cerf]] is also well-known for
 being The Father Of The Internet. So I really am in no position to
 second-guess his judgment.)
 
+முகவரிகள் முடிந்துவிட்டதா? எப்படி? 32-பிட் IPv4 முகவரிகள் எப்படியும் ஒரு பில்லியன் கணக்கில் இருக்கும்.
+நாம் பில்லியன் கணினிகளை இணைத்துவிட்டடோமா என்ன ? 
 Run out of addresses? How could this be? I mean, there are like billions
 of IP addresses in a 32-bit IPv4 address. Do we really have billions of
 computers out there?
 
+ஆம்.
 Yes.
+
+தொடக்கத்தில் கூறியது போலவெ சில கணினிகள் மட்டும் இருக்கும் போது ஒரு பில்லியன் என்பது ஒரு 
+முடியாத ஒரு பெரிய எண்ணிக்கையாகவே கருதப்பட்டது. சில பெரிய நிறுவனங்கள் கணிசமான எண்ணிகையில் 
+தனக்காண IP முகவரிகளை ஒதுக்கிகொண்டது. (உதாரணமாக Xerox, MIT, Ford, HP, IBM, GE, AT&T, மற்றும் Apple போன்ற சிறு நிறுவனங்களையும் குறிப்பிடலாம்)
 
 Also, in the beginning, when there were only a few computers and
 everyone thought a billion was an impossibly large number, some big
@@ -57,13 +64,17 @@ organizations were generously allocated millions of IP addresses for
 their own use. (Such as Xerox, MIT, Ford, HP, IBM, GE, AT&T, and some
 little company called Apple, to name a few.)
 
+உண்மையாகவே கூறப்போனால் சில நிறுத்தும் அளவுகோள்கள் இல்லையெனில் இன்னும் முன்பே நாம் எல்லா IP முகவரிகளையும் இழந்திருக்ககூடும்.
 In fact, if it weren't for several stopgap measures, we would have run
 out a long time ago.
+
+ஆனால் நாம் ஒவ்வொரு மனிதனும் ஒரு IP முகவரி, ஒவ்வொரு கணிக்கும், ஒவ்வொரு கணிப்பானுக்கும், ஒவ்வொரு கைபேசிக்கும்,
+ஒவ்வொரு பார்க்கிங் மீட்டருக்கும் ஏன் ஒவ்வொரு நாய்க்குட்டிக்கும்கூட முகவரி தேவைப்படும் ஒரு காலக்கட்டத்தில் வாழ்ந்து கொண்டிருக்கிறோம். 
 
 But now we're living in an era where we're talking about every human
 having an IP address, every computer, every calculator, every phone,
 every parking meter, and (why not) every puppy dog, as well.
-
+இப்படியே சென்றுகொண்டிருக்க [i[IPv6]] IPv6 பிறந்தது. 
 And so, [i[IPv6]] IPv6 was born. Since Vint Cerf is probably immortal
 (even if his physical form should pass on, heaven forbid, he is probably
 already existing as some kind of hyper-intelligent [flw[ELIZA|ELIZA]]
