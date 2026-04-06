@@ -82,13 +82,21 @@ program out in the depths of the Internet2), no one wants to have to
 hear him say again "I told you so" if we don't have enough addresses in
 the next version of the Internet Protocol.
 
+இது உங்களுக்கு எதை பரிந்துரைக்கிறது.
 What does this suggest to you?
+
+நமக்கு நிறைய முகவரிகள் தேவை. இருமடங்கு இல்லை மும்மடங்கில்லை அதையும்தான்டி 
+பில்லியன் ட்ரில்லியன் முகவரிகள் அதுவும் பத்தாது ஆனால் 79 மில்லியன் பில்லியன் டிரில்லியன் முகவரிகள் வேண்டும்.
+அதை நான் காட்டுகிறேன். 
 
 That we need a _lot_ more addresses. That we need not just twice as many
 addresses, not a billion times as many, not a thousand trillion times as
 many, but _79 MILLION BILLION TRILLION times as many possible
 addresses!_  That'll show 'em!
 
+பீஜ் நீங்கள் கூறுவது உண்மையா ? என நீங்கள் கூறுவதை நான் அறிவேன். என்னிடம் பெரிய எண்ணிக்கையை
+நம்பாமல் இருக்க அணைத்து காரணமும் உள்ளது. நல்லது, சரி 32 பிட் மற்றும் 128 பிட் ஒரே மாதிரி தோன்றினாலும் (என்ன ஒரு 96 பிட் வேறுபாடுதானே!).
+நினைவில் கொள்ளுங்கள் நாம் இங்கு 
 You're saying, "Beej, is that true? I have every reason to disbelieve
 large numbers."  Well, the difference between 32 bits and 128 bits might
 not sound like a lot; it's only 96 more bits, right? But remember, we're
@@ -96,6 +104,12 @@ talking powers here: 32 bits represents some 4 billion numbers (2^32^),
 while 128 bits represents about 340 trillion trillion trillion numbers
 (for real, 2^128^).  That's like a million IPv4 Internets for _every
 single star in the Universe_.
+IPV4 ல் உள்ள புள்ளிகள் மற்றும் எண்களை மறந்துவிடுங்கள் இப்போது நாம் பதினறும (பதினாறு அடிமான)
+குறிப்பிடும்போது ஒவ்வொரு இரு பைட்டும் முக்காற்புள்ளியால் (:) பிரிக்கப்பட்டிருக்கும். 
+
+``` {.default}
+2001:0db8:c9d2:aee5:73e3:934a:a5ae:9551
+```
 
 Forget this dots-and-numbers look of IPv4, too; now we've got a
 hexadecimal representation, with each two-byte chunk separated by a
@@ -103,7 +117,9 @@ colon, like this:
 
 ``` {.default}
 2001:0db8:c9d2:aee5:73e3:934a:a5ae:9551
+
 ```
+இதுமட்டுமல்ல பலநேரங்களில் உங்களுக்கு IP முகவரியில் பல பூச்சியங்கள் இருக்கும்.
 
 That's not all! Lots of times, you'll have an IP address with lots of
 zeros in it, and you can compress them between two colons. And you can
