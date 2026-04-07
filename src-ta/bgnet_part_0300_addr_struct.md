@@ -120,6 +120,20 @@ colon, like this:
 
 ```
 இதுமட்டுமல்ல பலநேரங்களில் உங்களுக்கு IP முகவரியில் பல பூச்சியங்கள் இருக்கும்.
+அவைகளை நீங்கள் இரு முக்காற்புள்ளிகளை (::) இடுவதன் மூலம் சுருக்கலாம்.
+மேலும் முன்னுள்ள பூச்சியங்களையும் நீங்கள் குறிப்பிடாமல் விடலாம். ஒரு உதாரணத்திற்கு
+ஒவ்வொறு ஜோடியும் ஒரே IP முகவரியை குறிக்கிறது. 
+
+``` {.default}
+2001:0db8:c9d2:0012:0000:0000:0000:0051
+2001:db8:c9d2:12::51
+
+2001:0db8:ab00:0000:0000:0000:0000:0000
+2001:db8:ab00::
+
+0000:0000:0000:0000:0000:0000:0000:0001
+::1
+```
 
 That's not all! Lots of times, you'll have an IP address with lots of
 zeros in it, and you can compress them between two colons. And you can
@@ -137,10 +151,16 @@ pairs of addresses are equivalent:
 ::1
 ```
 
+இதில் கடைசியாக குறிப்பிடப்பட்டுல்ல `::1` ஆனது  _loopback address_.
+இந்த முகவரி எப்போதும் இயங்கும் கணினியை குறிப்பிடும்.
+இதேபோல IPv4 ல் loopback முகவரியானது `127.0.0.1`.
+
 The address `::1` is the _loopback address_. It always means "this
 machine I'm running on now". In IPv4, the loopback address is
 `127.0.0.1`.
 
+முடிவாக IPv4 உடன் ஒத்துசெல்லக்கூடிய முறை நீங்கள் வருவீர்கள்.
+உதாரணமாக நீங்கள் `192.0.2.33`
 Finally, there's an IPv4-compatibility mode for IPv6 addresses that you
 might come across. If you want, for example, to represent the IPv4
 address `192.0.2.33` as an IPv6 address, you use the following notation:
