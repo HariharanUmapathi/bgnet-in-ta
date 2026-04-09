@@ -160,14 +160,17 @@ machine I'm running on now". In IPv4, the loopback address is
 `127.0.0.1`.
 
 முடிவாக IPv4 உடன் ஒத்துசெல்லக்கூடிய முறை நீங்கள் வருவீர்கள்.
-உதாரணமாக நீங்கள் `192.0.2.33`
+உதாரணமாக நீங்கள் `192.0.2.33` எனும் IPv4 முகவரியை பின்வருமாறு IPv6 முகவரியாக குறிப்பிடலாம் : "`::ffff:192.0.2.33`".
+ 
 Finally, there's an IPv4-compatibility mode for IPv6 addresses that you
 might come across. If you want, for example, to represent the IPv4
 address `192.0.2.33` as an IPv6 address, you use the following notation:
 "`::ffff:192.0.2.33`".
 
 We're talking serious fun.
+வேடிக்கையாக இருக்கிறது அல்லவா? 
 
+உண்மையாக சொல்லப்போனால்
 In fact, it's such serious fun, that the Creators of IPv6 have quite
 cavalierly lopped off trillions and trillions of addresses for reserved
 use, but we have so many, frankly, who's even counting anymore? There
